@@ -20,6 +20,7 @@ class CreateOverviewsTable extends Migration
             $table->string('short_body');
             $table->string('long_body');
             $table->timestamps();
+            $table->softDeletesTz();
         });
     }
 

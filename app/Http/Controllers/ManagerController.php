@@ -15,28 +15,24 @@ class ManagerController extends Controller
     
     public function show(Initial $initial)
     {
-        $id_initial=$initial->id;
-        $initial_initial=$initial->initial;
-        $overviews=Initial::find($id_initial)->overviews;
-        return view('manager.show')->with(['overviews' => $overviews, 'initial' => $initial_initial, 'id_initial' => $id_initial]);  
+        $overviews=Initial::find($initial->id)->overviews;
+        return view('manager.show')->with(['overviews' => $overviews, 'initial' => $initial]);  
     }
     
     public function short(Initial $initial, $overview_id)
     {
-        $id_initial=$initial->id;
         $overview=Overview::where('id', $overview_id)->first();
         $short=$overview->short_body;
         $title=$overview->title;
-        return view('manager.short')->with(['short' => $short, 'title' => $title, 'id_initial' => $id_initial]);  
+        return view('manager.short')->with(['short' => $short, 'title' => $title, 'initial' => $initial]);  
     }
     
     public function long(Initial $initial, $overview_id)
     {
-        $id_initial=$initial->id;
         $overview=Overview::where('id', $overview_id)->first();
         $long=$overview->long_body;
         $title=$overview->title;
-        return view('manager.long')->with(['long' => $long, 'title' => $title, 'id_initial' => $id_initial]);  
+        return view('manager.long')->with(['long' => $long, 'title' => $title, 'initial' => $initial]);  
     }
     
     public function create(Initial $initial)
@@ -62,7 +58,7 @@ class ManagerController extends Controller
         }
         
         $overview->fill($input)->save();
-        return redirect('/initials/'.$initial);
+        return redirect('/manager/initials/'.$initial);
     }
     
     public function edit(Initial $initial, $overview_id)
@@ -77,7 +73,7 @@ class ManagerController extends Controller
         $overview=Overview::where('id', $overview_id)->first();
         $input_edit=$request['overview'];
         $overview->fill($input_edit)->save();
-        return redirect('/initials/'.$initial);
+        return redirect('/manager/initials/'.$initial);
     }
     
     public function destroy(Request $request, Overview $overview, $initial)
@@ -85,6 +81,6 @@ class ManagerController extends Controller
         $overview_id=$request['overview_id'];
         $overview=Overview::where('id', $overview_id)->first();
         $overview->delete();
-        return redirect('/initials/'.$initial);
+        return redirect('/manager/initials/'.$initial);
     }
 }
