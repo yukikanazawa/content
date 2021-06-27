@@ -8,20 +8,20 @@
     </head>
     <body>
         <h1>{{ $title }}</h1>
-        <div class='long_content'>
+        <div class='short_content'>
             <div class="content__post">
-                <h3>長文要約</h3>
+                <h3>短文要約</h3>
                 <p>
                     <?php
-                    if (empty($long)){
-                        echo '（´・人・｀）このコンテンツの長文要約はまだ空です。（´・人・｀）';
+                    if (empty($short)){
+                        echo '（´・人・｀）このコンテンツの短文要約はまだ空です。（´・人・｀）';
                     } else{
-                        echo $long->body;
+                        echo $short;
                     }
                     ?>
-                </p>    
+                </p> 
             </div>
         </div>
-        <div class='back'>[<a href='/initials/{{$id_initial}}'>戻る</a>]</div>
+        <div class='back'>[<a href='/initials/{{ $initial->id }}'>戻る</a>]</div>
     </body>
 </html>

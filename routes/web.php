@@ -10,16 +10,20 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-//管理者用
-Route::get('/', 'ManagerController@index');     
-Route::get('/initials/{initial}/{overview_id}/short', 'ManagerController@short');
-Route::get('/initials/{initial}/{overview_id}/long', 'ManagerController@long');
-Route::get('/initials/{initial}/{overview_id}/edit', 'ManagerController@edit');
-Route::get('/initials/{initial}', 'ManagerController@show');
-Route::delete('/initials/{initial}', 'ManagerController@destroy');
-Route::put('/initials/{initial}', 'ManagerController@update');
-Route::post('/initials/{initial}', 'ManagerController@store');
-Route::get('/initials/{initial}/create', 'ManagerController@create');
-
-
 //ユーザー用
+Route::get('/', 'ContentController@index');     
+Route::get('/initials/{initial}/{overview_id}/short', 'ContentController@short');
+Route::get('/initials/{initial}/{overview_id}/long', 'ContentController@long');
+Route::get('/initials/{initial}', 'ContentController@show');
+
+
+//管理者用
+Route::get('/manager/', 'ManagerController@index');     
+Route::get('/manager/initials/{initial}/{overview_id}/short', 'ManagerController@short');
+Route::get('/manager/initials/{initial}/{overview_id}/long', 'ManagerController@long');
+Route::get('/manager/initials/{initial}/{overview_id}/edit', 'ManagerController@edit');
+Route::get('/manager/initials/{initial}', 'ManagerController@show');
+Route::delete('/manager/initials/{initial}', 'ManagerController@destroy');
+Route::put('/manager/initials/{initial}', 'ManagerController@update');
+Route::post('/manager/initials/{initial}', 'ManagerController@store');
+Route::get('/manager/initials/{initial}/create', 'ManagerController@create');

@@ -7,14 +7,13 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
-        <h1>{{ $initial }}行</h1>
+        <h1>{{ $initial->initial }}行</h1>
         <div class='titles'>
-            @foreach ($titles as $title)
-                <h2>{{ $title->title }}</h2>
-                <a href="/initials/{{ $id_initial }}/{{ $title->id }}/short">短文要約</a>
-                <a href="/initials/{{ $id_initial }}/{{ $title->id }}/long">長文要約</a><br>
-            @endforeach
-        </div>
+            @foreach ($overviews as $overview)
+                <h2>{{ $overview->title }}</h2>
+                <a href="/initials/{{ $initial->id }}/{{ $overview->id }}/short">短文要約</a>
+                <a href="/initials/{{ $initial->id }}/{{ $overview->id }}/long">長文要約</a><br>
+            @endforeach     </div>
         <div class='back'>[<a href='/'>戻る</a>]</div>
     </body>
 </html>

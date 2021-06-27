@@ -2,11 +2,11 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <title>コンテンツの編集</title>
+        <title>コンテンツの編集[管理者用]</title>
     </head>
     <body>
         <h1>{{ $overview->title }}のコンテンツの編集</h1>
-        <form action="/initials/{{ $initial->id }}" method="POST">
+        <form action="/manager/initials/{{ $initial->id }}" method="POST">
             @csrf
             @method('PUT')
             <div class="title">
@@ -23,6 +23,6 @@
             <input type="hidden" name="overview_id" value='{{ $overview->id }}'/>
             <input type="submit" value="保存"/>
         </form>
-        <div class="back">[<a href="/initials/{{ $initial->id }}">戻る</a>]</div>
+        <div class="back">[<a href="/manager/initials/{{ $initial->id }}">戻る</a>]</div>
     </body>
 </html>

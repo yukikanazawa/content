@@ -2,11 +2,11 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <title>{{ $initial->initial }}行のコンテンツの短文要約</title>
+        <title>{{ $initial->initial }}行のコンテンツの要約[管理者用]</title>
     </head>
     <body>
-        <h1>{{ $initial->initial }}行のコンテンツの短文要約</h1>
-        <form action="/initials/{{ $initial->id }}" method="POST">
+        <h1>{{ $initial->initial }}行のコンテンツの要約</h1>
+        <form action="/manager/initials/{{ $initial->id }}" method="POST">
             {{ csrf_field() }}
             <div class="title">
                 <h2>タイトル</h2>
@@ -21,6 +21,6 @@
             </div><br>
             <input type="submit" value="保存"/>
         </form>
-        <div class="back">[<a href="/initials/{{ $initial->id }}">戻る</a>]</div>
+        <div class="back">[<a href="/manager/initials/{{ $initial->id }}">戻る</a>]</div>
     </body>
 </html>
