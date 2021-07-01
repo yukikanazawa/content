@@ -13,10 +13,10 @@ class ManagerController extends Controller
         return view('manager.index')->with(['initials' => $initial->get()]);  
     }
     
-    public function show(Initial $initial)
+    public function initial(Initial $initial)
     {
         $overviews=Initial::find($initial->id)->overviews;
-        return view('manager.show')->with(['overviews' => $overviews, 'initial' => $initial]);  
+        return view('manager.initial')->with(['overviews' => $overviews, 'initial' => $initial]);  
     }
     
     public function short(Initial $initial, $overview_id)
@@ -82,5 +82,10 @@ class ManagerController extends Controller
         $overview=Overview::where('id', $overview_id)->first();
         $overview->delete();
         return redirect('/manager/initials/'.$initial);
+    }
+    
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
 }
