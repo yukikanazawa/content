@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
+<link rel="stylesheet" href='{{ asset('css/style.css') }}' />
 @section('content')
-    <h1>{{ $title }}[管理者用]</h1>
+<div class='body'> 
+    <h1>{{ $overview->title }}[管理者用]</h1>
         <div class='short_content'>
             <div class="content__post">
                 <h3>短文要約</h3>
@@ -16,5 +18,6 @@
                 </p> 
             </div>
         </div>
-        <div class='back'>[<a href='/manager/initials/{{ $initial->id }}'>戻る</a>]</div>
+        <div class='back'>[<a href='/manager/initials/{{ $initial->id }}/{{ $overview->id }}'>戻る</a>]</div>
+</div>
 @endsection

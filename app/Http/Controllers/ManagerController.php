@@ -24,7 +24,7 @@ class ManagerController extends Controller
         $overview=Overview::where('id', $overview_id)->first();
         $short=$overview->short_body;
         $title=$overview->title;
-        return view('manager.short')->with(['short' => $short, 'title' => $title, 'initial' => $initial]);  
+        return view('manager.short')->with(['short' => $short, 'overview' => $overview, 'initial' => $initial]);  
     }
     
     public function long(Initial $initial, $overview_id)
@@ -32,7 +32,7 @@ class ManagerController extends Controller
         $overview=Overview::where('id', $overview_id)->first();
         $long=$overview->long_body;
         $title=$overview->title;
-        return view('manager.long')->with(['long' => $long, 'title' => $title, 'initial' => $initial]);  
+        return view('manager.long')->with(['long' => $long, 'overview' => $overview, 'initial' => $initial]);  
     }
     
     public function create(Initial $initial)
@@ -46,17 +46,15 @@ class ManagerController extends Controller
         $input['initial_id']=$initial;
         //以下によって定義されていないbodyの中を「空」として定義している
         if (empty($input['short_body']) && empty($input['long_body'])){
-                
             $input['short_body']='';
             $input['long_body']='';
+        
         } elseif (empty($input['short_body'])){
-            
             $input['short_body']='';
+         
         } elseif (empty($input['long_body'])){
-            
             $input['long_body']='';
         }
-        
         $overview->fill($input)->save();
         return redirect('/manager/initials/'.$initial);
     }
@@ -71,8 +69,21 @@ class ManagerController extends Controller
     {
         $overview_id=$request['overview_id'];
         $overview=Overview::where('id', $overview_id)->first();
-        $input_edit=$request['overview'];
-        $overview->fill($input_edit)->save();
+        $input=$request['overview'];
+        //以下によって定義されていないbodyの中を「空」として定義している
+        if (empty($input['short_body']) && empty($input['long_body'])){
+                
+            $input['short_body']='';
+            $input['long_body']='';
+        } elseif (empty($input['short_body'])){
+            
+            $input['short_body']='';
+        } elseif (empty($input['long_body'])){
+            
+            $input['long_body']='';
+        }
+        
+        $overview->fill($input)->save();
         return redirect('/manager/initials/'.$initial);
     }
     
