@@ -36,7 +36,7 @@
                     @if( $comment->name == optional(Auth::user())->name )
                         <input type="hidden" name="comment_id" value='{{ $comment->id }}'/>
                         <input type="submit" style="display:none">
-                        <button class='destroy'><span onclick="return deletePost();">削除</span></button>
+                        <button onclick="return deletePost();">削除</button>
                     @endif
                 </form>
                 </div>
@@ -44,7 +44,6 @@
             @endforeach</br></br>
         </div>
     </div>
-
     <script>
         function deletePost(){
             'use strict';
