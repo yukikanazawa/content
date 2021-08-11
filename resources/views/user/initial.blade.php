@@ -9,6 +9,7 @@
             <h4><a href="/initials/{{ $initial->id }}/{{ $overview->id }}">・{{ $overview->title }}</a></h4>
         @endforeach
     </div>
+    {{ $overviews->links() }}
     <div class='back'>[<a href='/'>戻る</a>]</div>
 </div>  
 @endsection
