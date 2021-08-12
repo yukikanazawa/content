@@ -10,6 +10,7 @@
                 <h4><a href="/manager/initials/{{ $initial->id }}/{{ $overview->id }}">・{{ $overview->title }}</a></h4>
             @endforeach
         </div>
+        {{ $overviews->links() }}
         <div class='back'>[<a href='/manager/'>戻る</a>]</div>
 </div>
 @endsection

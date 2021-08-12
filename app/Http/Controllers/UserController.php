@@ -15,7 +15,7 @@ class UserController extends Controller
     
     public function initial(Initial $initial)
     {
-        $overviews=Initial::find($initial->id)->overviews;
+        $overviews=Overview::where('initial_id', $initial->id)->simplepaginate(10);
         return view('user.initial')->with(['overviews' => $overviews, 'initial' => $initial]);
     }
 
