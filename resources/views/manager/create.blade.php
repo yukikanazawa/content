@@ -8,7 +8,7 @@
             {{ csrf_field() }}
             <div class="title">
                 <h2>タイトル</h2>
-                <input type="text" name="overview[title]" placeholder="タイトルを記載" size="48"//>
+                <input type="text" name="overview[title]" placeholder="タイトルを記載" size="48">
             </div>
             <div class="short\body">
                 <h2>短文</h2>
